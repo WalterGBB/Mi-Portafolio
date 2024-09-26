@@ -13,7 +13,7 @@ nav {
   width: 50vw;
   justify-content: center;
   /*z-index define qué elementos se muestran por encima de otros cuando se superponen, un z-index mayor apila un elemento por encima otros con un z-index menor*/
-  z-index: 1;
+  z-index: 2;
 }
 
 section {
@@ -31,6 +31,11 @@ h1 {
 
 button {
   margin: 0 !important;
+  font-weight: 500 !important;
+}
+
+button:hover {
+  background-color: #569aff81;
 }
 
 .seccion-oscura {
@@ -134,6 +139,18 @@ button {
   justify-content: space-around;
 }
 
+.skills-contenedor {
+  display: grid;
+  grid-template-columns: 105px 105px 105px;
+  grid-template-rows: 105px 105px;
+  justify-items: center;
+  margin-top: 25px;
+}
+
+.skills-contenedor a {
+  margin: 15px;
+}
+
 .frontend h2 {
   font-family: "Permanent Marker", cursive;
   background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff);
@@ -156,8 +173,7 @@ button {
 }
 
 .skills {
-  height: 100px;
-  margin: 2vw;
+  height: 90px;
 }
 
 .skills:hover {
@@ -166,16 +182,14 @@ button {
 
 /*Sobre mí*/
 .sobre-mi {
-  height: 350px;
-  padding: 0 20px 0 20px;
+  padding: 17vh 20px;
   color: white;
 }
 
 .sobre-mi .contenedor {
+  padding: 0 40px;
   display: flex;
   flex-direction: column;
-  max-height: 350px;
-  padding: 0 60px;
   text-align: center;
 }
 
@@ -248,21 +262,21 @@ button {
 }
 
 /*Proyectos*/
-.proyectos-recientes {
-  padding: 60px 20px;
+.proyectos {
+  padding: 65px 20px;
 }
 
-.proyectos-recientes img {
-  height: 100%;
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  display: block;
-  transition: all 0.2s ease;
+.proyectos img {
+  height: 250px;
+  width: 98%;
+  padding: 5px 0;
+  z-index: 1;
+  border-radius: 10%;
 }
 
 .proyectos-contenedor {
   padding: 30px 0 0;
+  margin-bottom: 0 !important;
   margin-bottom: 40px;
 }
 
@@ -289,7 +303,45 @@ button {
 }
 
 .proyecto {
+  height: calc(100% - 30px);
+  width: calc(100% - 30px); /* Ajusta el ancho para compensar el margen */
+  background-color: #101010;
+  border-radius: 10%;
+  box-shadow: 10px 10px 10px #0000008c;
   position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 25px 30px 25px; /* Márgenes laterales y margen inferior */
+}
+
+.proyecto::before {
+  content: "";
+  position: absolute;
+  height: 240px;
+  width: 360px;
+  background-image: conic-gradient(#2d7be7e6 20deg, transparent 120deg);
+  animation: rotar 7s linear infinite;
+}
+
+@keyframes rotar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.proyecto::after {
+  content: "";
+  position: absolute;
+  height: 245px;
+  width: calc(100% - 8px);
+  background-color: #101010;
+  border-radius: 10%;
+  box-shadow: inset 10px 10px 10px #0000008c;
 }
 
 .proyecto:hover img {
@@ -299,6 +351,28 @@ button {
 /*Cuando el cursor está sobre el elemento de clase proyecto, asignamos los siguientes estilos al elemento de clase .overlay que está dentro de .proyecto*/
 .proyecto:hover .overlay {
   opacity: 1;
+}
+
+.overlay {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  transition: all 0.2s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.overlay p {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #709bff;
 }
 
 .overlay .iconos-contenedor {
@@ -321,11 +395,15 @@ button {
 .overlay .iconos-contenedor a:hover img {
   height: 75px;
   width: 75px;
-  background-color: #00ff00;
+  background-color: #007bff;
 }
 
-.proyectos a {
-  padding: 0 !important;
+.btn-info {
+  font-size: 1.1rem;
+}
+
+.proyectos .btn {
+  margin-top: 16px;
 }
 
 /*Artículos*/
@@ -366,7 +444,7 @@ button {
 
 /*Testimonios*/
 .testimonios {
-  padding: 40px 40px 65px 40px;
+  padding: 65px 40px;
 }
 
 .testimonios .carousel {
@@ -421,13 +499,8 @@ button {
 /*Contacto*/
 #contacto {
   padding: 60px 0 70px;
-}
-
-.contacto .container {
-  max-width: 1100px;
-  min-height: 200px;
-  padding: 20px;
-  align-content: center;
+  justify-content: center;
+  justify-items: center;
 }
 
 .contacto .rectangulo {
@@ -435,17 +508,21 @@ button {
   background-color: #0d192b;
   border-radius: 10px;
   box-shadow: 0 1px 4px 1px white;
+  max-width: 1100px;
+  min-height: 200px;
+  padding: 20px;
+  align-content: center;
 }
 
-.contacto .row {
+.rectangulo .row {
   width: 100%;
   display: flex;
-  align-items: center;
 }
 
 .contacto .row div {
   height: 100px;
   align-content: center;
+  text-align: center;
 }
 
 .contacto .row div:not(:last-child) {
@@ -549,33 +626,31 @@ a .footer-logo:hover {
   font-size: 18px;
   color: grey;
   padding: 20px;
+  text-align: center;
 }
 
 /*Adaptable (Responsivo)*/
-@media (width < 361px) {
+@media (width < 426px) {
   /*Seccion Hero*/
   /*Section de id = sobre-mi*/
   #sobre-mi {
-    height: 650px !important;
-    padding-bottom: 18%;
+    padding: 17vh 10px;
   }
 
   .sobre-mi .contenedor {
-    height: 650px !important;
-    padding-bottom: 30px !important;
-  }
-}
-
-@media (width < 428px) {
-  /*Seccion Hero*/
-  /*Section de id = sobre-mi*/
-  #sobre-mi {
-    height: 500px;
+    padding: 0 26px;
   }
 
-  .sobre-mi .contenedor {
-    max-height: 500px;
-    padding-bottom: 30px !important;
+  .hero-principal {
+    padding: 48px 20px;
+  }
+
+  .hero-principal h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .hero-principal h2 {
+    font-size: 1.1rem !important;
   }
 
   /*Seccion Proyectos*/
@@ -588,7 +663,7 @@ a .footer-logo:hover {
   }
 }
 
-@media (width < 555px) {
+@media (width < 769px) {
   /*seccion hero*/
   .hero-inferior {
     display: flex;
@@ -601,23 +676,12 @@ a .footer-logo:hover {
     margin-bottom: 50px;
   }
 
-  .sobre-mi {
-    height: 450px;
-  }
-
-  .sobre-mi .contenedor {
-    max-height: 450px;
-    padding: 0 60px;
-  }
-}
-
-@media (width < 768px) {
   .nabvar-brand {
     display: none;
   }
 
-  .sobre-mi .contenedor {
-    padding: 0 40px;
+  .sobre-mi {
+    padding-top: 14vh;
   }
 
   .seccion-titulo {
@@ -681,9 +745,13 @@ a .footer-logo:hover {
     font-size: 0.9rem;
   }
 
+  .skills-contenedor {
+    grid-template-columns: 95px 95px 95px;
+    grid-template-rows: 95px 95px;
+  }
+
   .skills {
     height: 80px;
-    margin: 1vw;
   }
 
   /*seccion experiencia*/
@@ -711,6 +779,10 @@ a .footer-logo:hover {
     font-size: 0.85rem;
   }
 
+  button {
+    font-size: 0.9rem !important;
+  }
+
   /*Seccion Testimonios*/
   .testimonios .testimonio-texto {
     font-size: 0.85rem;
@@ -736,5 +808,9 @@ a .footer-logo:hover {
   .contacto button {
     font-size: 0.95rem;
     padding: 0.2em 1rem 0.4rem;
+  }
+
+  .derechos-de-autor {
+    font-size: 16px;
   }
 }
